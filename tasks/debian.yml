@@ -1,5 +1,6 @@
 - name: Install squid packages
-  apt: name="{{ item }}" state=present update_cache=yes
-  with_items: "{{ squid_packages }}"
+  apt: name="{{ squid_packages }}" state=present update_cache=yes
+  notify:
+    - restart squid
   tags:
     - squid

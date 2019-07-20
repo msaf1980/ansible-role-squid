@@ -7,6 +7,7 @@ squid_service_name: "squid"
 squid_access_log: "daemon:/var/log/{{ squid_service_name }}/access.log squid"
 squid_config_dir: "/etc/squid"
 squid_coredump_dir: "/var/spool/squid"
+squid_bin: "/usr/sbin/squid"
 squid_always_directs: []
 squid_cache_peers: []
 squid_dns_v4_first: "off"

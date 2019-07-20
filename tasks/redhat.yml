@@ -1,4 +1,6 @@
 - name: Install squid packages
   yum: name="{{ squid_packages }}" state=present
+  notify:
+    - restart squid
   tags:
     - squid

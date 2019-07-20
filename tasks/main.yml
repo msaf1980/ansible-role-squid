@@ -8,6 +8,13 @@
   when:
     - ansible_os_family|lower == 'debian'
 
+- name: Backup squid config
+  become: yes
+  shell: tar -czf {{ squid_config_dir }}.tar.gz {{ squid_config_dir }}
+  changed_when: False
+  tags:
+    - squid
+
 - name: Create Squid configuration file
   become: yes
   template:
@@ -18,6 +25,13 @@
     mode: 0644
   notify:
     - reload squid
+  tags:
+    - squid
+
+- name: Check squid config
+  become: yes
+  shell: "{{ squid_bin }} -k check"
+  changed_when: False
   tags:
     - squid
 
