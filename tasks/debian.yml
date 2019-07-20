@@ -1,5 +1,5 @@
 - name: Install squid packages
-  apt: name="{{ items }}" state=present update_cache=yes
+  apt: name="{{ item }}" state=present update_cache=yes
   with_items: "{{ squid_packages }}"
   tags:
     - squid

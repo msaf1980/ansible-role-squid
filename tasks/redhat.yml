@@ -1,5 +1,5 @@
 - name: Install squid packages
-  yum: name="{{ items }}" state=present
+  yum: name="{{ item }}" state=present
   with_items: "{{ squid_packages }}"
   tags:
     - squid
