@@ -1,0 +1,10 @@
+squid_forwarded_for: off
+squid_http_access:
+  - localhost
+  - virt0
+  - power
+squid_acls:
+  - "servers src 192.168.0.140/32"
+squid_http_access_allow_acls:
+  - localhost
+  - servers
