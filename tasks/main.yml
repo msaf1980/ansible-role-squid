@@ -4,6 +4,10 @@
   when:
     - ansible_os_family|lower in ('centos', 'redhat')
 
+- import_tasks: debian.yml
+  when:
+    - ansible_os_family|lower == 'debian'
+
 - name: Create Squid configuration file
   become: yes
   template:

@@ -1,5 +1,5 @@
 - name: Install squid packages
-  yum: name="{{ items }}" state=present
+  apt: name="{{ items }}" state=present update_cache=yes
   with_items: "{{ squid_packages }}"
   tags:
     - squid

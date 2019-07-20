@@ -1,7 +1,8 @@
 ---
 # defaults file for squid
 
-squid_package: "squid"
+squid_packages:
+  - squid
 squid_service_name: "squid"
 squid_access_log: "daemon:/var/log/{{ squid_service_name }}/access.log squid"
 squid_config_dir: "/etc/squid"
