@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - msaf1980.squid
+    - ansible-squid
