@@ -3,7 +3,7 @@
 squid
 =====
 
-[![Build Status](https://travis-ci.org/kbrebanov/ansible-squid.svg?branch=master)](https://travis-ci.org/kbrebanov/ansible-squid)
+[![Build Status](https://travis-ci.org/msaf1980/ansible-squid.svg?branch=master)](https://travis-ci.org/msaf1980/ansible-squid)
 
 Installs Squid
 
@@ -45,8 +45,15 @@ Example Playbook
 Install Squid
 ```yaml
 - hosts: all
+  vars:
+    squid_forwarded_for: off
+    squid_acls:
+      - "servers src 192.168.0.140/32"
+    squid_http_access_allow_acls:
+      - localhost
+      - servers
   roles:
-    - kbrebanov.squid
+    - msaf1980.squid
 ```
 
 License
