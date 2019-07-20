@@ -15,7 +15,7 @@ acl CONNECT method CONNECT
 
 {% if squid_acls %}
 {% for acl in squid_acls %}
-acl {{ acl.name }} {{ acl.type }} {{ acl.argument }}
+acl {{ acl }}
 {% endfor %}
 {% endif %}
 
@@ -23,8 +23,8 @@ http_access deny !Safe_ports
 http_access deny CONNECT !SSL_ports
 http_access allow localhost manager
 http_access deny manager
-{% for client in squid_http_access_allow_clients %}
-http_access allow {{ client }}
+{% for acl_name in squid_http_access_allow_acls %}
+http_access allow {{ acl_name }}
 {% endfor %}
 http_access deny all
 
@@ -40,7 +40,7 @@ cache_peer {{ cache_peer.hostname }} {{ cache_peer.type }} {{ cache_peer.http_po
 {% endfor %}
 {% endif %}
 
-coredump_dir {{ squid_coredump_dir }}
+{% if squid_coredump_dir is defined %}coredump_dir {{ squid_coredump_dir }}{% endif %}
 
 refresh_pattern ^ftp:		1440	20%	10080
 refresh_pattern ^gopher:	1440	0%	1440

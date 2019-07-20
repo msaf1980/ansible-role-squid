@@ -1,13 +1,16 @@
 ---
 # defaults file for squid
 
+squid_package: "squid"
+squid_service_name: "squid"
 squid_access_log: "daemon:/var/log/{{ squid_service_name }}/access.log squid"
-squid_acls: []
+squid_config_dir: "/etc/squid"
 squid_always_directs: []
 squid_cache_peers: []
 squid_dns_v4_first: "off"
 squid_forwarded_for: "on"
-squid_http_access_allow_clients:
+squid_acls: []
+squid_http_access_allow_acls:
   - localhost
 squid_http_port: 3128
 squid_httpd_suppress_version_string: "off"
