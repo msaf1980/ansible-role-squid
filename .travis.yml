@@ -17,8 +17,9 @@ env:
       VERSION: 18.04
     - DISTRIBUTION: debian
       VERSION: 9
-    - DISTRIBUTION: debian
-      VERSION: 10
+# Debian buster docker image is buggy
+#    - DISTRIBUTION: debian
+#      VERSION: 10
 services:
   - docker
 
