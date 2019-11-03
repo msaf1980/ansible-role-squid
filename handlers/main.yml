@@ -5,7 +5,7 @@
   service:
     name: "{{ squid_service_name }}"
     state: restarted
-  notify: check squid
+#  notify: check squid
   tags:
     - squid
 
@@ -13,10 +13,10 @@
   service:
     name: "{{ squid_service_name }}"
     state: reloaded
-  notify: check squid
+#  notify: check squid
   tags:
     - squid
 
-- name: check squid
-  shell: service {{ squid_service_name }} status
-  changed_when: False
+#- name: check squid
+#  shell: service {{ squid_service_name }} status
+#  changed_when: False

@@ -28,13 +28,6 @@
   tags:
     - squid
 
-- name: Check squid config
-  become: yes
-  shell: "{{ squid_bin }} -k check"
-  changed_when: False
-  tags:
-    - squid
-
 - name: Ensure Squid service is started and enabled on boot
   become: yes
   service:
@@ -43,3 +36,11 @@
     enabled: yes
   tags:
     - squid
+
+- name: Check squid config
+  become: yes
+  shell: "{{ squid_bin }} -k check"
+  changed_when: False
+  tags:
+    - squid
+
