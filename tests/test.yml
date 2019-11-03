@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
-  remote_user: root
+- name: Converge
+  hosts: all
   roles:
-    - msaf1980.squid
+    - role: msaf1980.squid
