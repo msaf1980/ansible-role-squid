@@ -42,6 +42,23 @@
 
 ####################################################################
 
+####################################################################
+# Workarounds for some bugs
+if [ -f /etc/redhat-release ]; then
+    major_version=$( rpm -E %{rhel} )
+
+    # Bug in docker hosts OS overlayfs
+    # Rpmdb checksum is invalid: dCDPT(pkg checksums):
+    # https://stackoverflow.com/questions/51287437/docker-image-build-getting-check-sum-error-rpmdb-checksum-is-invalid-dcdpt
+    [ "${major_version}" == "7" -o "${major_version}" == "6" ] && {
+       yum clean all
+       yum install -y yum-plugin-ovl
+    }
+fi
+
+###################################################################
+
+
 # Bash settings
 # abort on nonzero exitstatus
 set -o errexit
@@ -85,6 +102,9 @@ configure_environment() {
       ;;
     centos_7|centos_8|oraclelinux_7|oraclelinux_8|fedora_*)
       init=/usr/lib/systemd/systemd
+      if [ -x '/usr/sbin/getenforce' ]; then
+        run_opts+=('--volume=/sys/fs/selinux:/sys/fs/selinux:ro')
+      fi
       run_opts+=('--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro')
       ;;
     ubuntu_14.04)
