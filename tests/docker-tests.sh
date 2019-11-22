@@ -19,6 +19,8 @@
 # $ DISTRIBUTION=ubuntu VERSION=18.04 ./tests/docker-tests.sh
 #
 
+readonly ROLE="msaf1980.squid"
+
 readonly script_dir=$( dirname "${BASH_SOURCE[0]}" )
 
 . ${script_dir}/docker-tools || exit 1

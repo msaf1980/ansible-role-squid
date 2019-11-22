@@ -34,4 +34,4 @@ before_install:
   #- git worktree add docker-tests origin/docker-tests
 
 script:
-  - ROLE=msaf1980.squid ./tests/docker-tests.sh
+  - ./tests/docker-tests.sh
