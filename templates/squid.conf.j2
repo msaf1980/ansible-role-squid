@@ -60,7 +60,9 @@ never_direct {{ never_direct.type }} {{ never_direct.acl_name }}
 {% endfor %}
 {% endif %}
 
-dns_v4_first {{ squid_dns_v4_first }}
+{% if squid_dns_v4_first %}
+dns_v4_first on
+{% endif %}
 
 via {{ squid_via }}
 
